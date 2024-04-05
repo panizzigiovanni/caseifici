@@ -113,6 +113,7 @@
 
         #my-table thead {
             display: table-header-group;
+            
            
         }
 
@@ -125,11 +126,13 @@
             border: 1px solid #FFC94A;
             padding: 0.25rem;
             text-align: left;
+            color: #FFC94A;
             border-radius: 4px;
         }
 
         #my-table th {
-            background-color: #eee;
+            background-color: #FFFEEF;
+            color: black;
         }
 
         button {
@@ -142,13 +145,42 @@
             cursor: pointer;
             border-radius: 10px; /* Make the buttons rounded */
             text-decoration: none;
+            font-weight: bold;
         }
 
-        .div-vendita{
-
-            
-            
+        input[type=text] {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            background-color: #fff;
         }
+
+         
+        
+        input[type=date] {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            background-color: #fff;
+          
+        }
+
+        select{
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            background-color: #fff;
+        }
+        
 
         .spazio-superiore {
             margin-top: 10px;
@@ -200,14 +232,18 @@
                     </div>
                 
                     <div class="spazio-superiore">
-                        <label for="text-input">Testo:</label>
+                        <label for="text-input">Nome acquirente:</label>
                         <input type="text" id="text-input" name="text-input">
                         <br>
                     </div>
                 
                     <div class="spazio-superiore">
-                        <label for="item-input">Elemento:</label>
-                        <input type="number" id="item-input" name="item-input">
+                        <label for="item-input">Tipo acquirente:</label>
+                        <select name="" id="">
+                            <option value="prova">prova</option>
+                            <option value="prova2">prova2</option>
+                            <option value="prova3">prova3</option>
+                        </select>
                         <br>
                     </div>
                 
@@ -219,47 +255,45 @@
 
             <div class="divsopra"> 
                 <form>
-                    <label for="date-input">Date:</label>
-                    <input type="date" id="date-input" name="date-input">
-                    <br>
-                    <label for="text-input">Text:</label>
-                    <input type="text" id="text-input" name="text-input">
-                    <br>
-                    <label for="item-input">Item:</label>
-                    <input type="number" id="item-input" name="item-input">
-                    <br>
-                    <button type="submit">Modifica</button>
-                  </form>
+                    <h3>Modifica</h3>
+                    <div class="spazio-superiore">
+                        <label>Codice della forma:</label>
+                        <input type="text" id="text-input" name="text-input">
+                    </div>
+
+                    <div class="spazio-superiore">   
+                        <button type="submit">Modifica</button>
+                    </div> 
+                </form>
             </div>
         </div>
 
        
         <div class="divsotto"> 
 
-        <table id="my-table">
-            <thead>
-              <tr>
-                <th>Codice</th> 
-                <th>Stagionatura</th>
-                <th>Selezionata</th>
-               
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>John</td>
-                <td>John</td>
-                <td><input type="checkbox"></td>
-              </tr>
-              <tr>
-                <td>Jane</td>
-                <td>John</td>
-                <td><input type="checkbox"></td>
-              </tr>
-              <!-- Add more rows as needed -->
-            </tbody>
-          </table>
-
+            <table id="my-table">
+                <thead>
+                <tr>
+                    <th>Codice Univoco</th>
+                    <th>Data produzione</th> 
+                    <th>Progressivo</th>
+                    <th>Stagionatura</th>
+                    <th>Scelta</th>
+                    <th>Selezionato</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>5433</td>
+                    <td>12/43/32</td>
+                    <td>353</td>
+                    <td>12 Mesi</td>
+                    <td>Prima</td>
+                    <td><input type="checkbox" id="5433"></td>
+                </tr>
+                <!-- Add more rows as needed -->
+                </tbody>
+            </table>
           
         </div>
     </div>
