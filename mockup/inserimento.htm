@@ -149,17 +149,45 @@
             display: none;
         }
         
+        .bottone-disabilitato {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
         
     </style>
     <script>
         // Get the input element
         document.addEventListener("DOMContentLoaded", function () {
-        // Get the input element
-        const dateInput = document.getElementById("date-input");
+            // Get the input element
+            const dateInput = document.getElementById("date-input");
 
-        // Set the value to the current date
-        dateInput.value = new Date().toISOString().slice(0, 10);
+            // Set the value to the current date
+            dateInput.value = new Date().toISOString().slice(0, 10);
         });
+
+        // Crea una funzione che gestisca l'evento onchange
+        function handleQuantitaChange(){
+            const quantitaTotale= document.getElementById("gioLav_quanPro").value;
+            const quantita12 = document.getElementById("quantita12").value;
+            const quantita24 = document.getElementById("quantita24").value;
+            const quantita30 = document.getElementById("quantita30").value;
+            const quantita36 = document.getElementById("quantita36").value;
+            const somma = +quantita12 + +quantita24 + +quantita30 + +quantita36;
+
+            if(quantitaTotale==somma){
+                console.log("ABILITATO")
+                document.getElementById("bottoneInvio").disabled = false;
+                document.getElementById("bottoneInvio").classList.remove("bottone-disabilitato");
+            }else{
+                console.log("DISABILITATO")
+                document.getElementById("bottoneInvio").disabled = true;
+                document.getElementById("invio").classList.add("bottone-disabilitato");
+            }
+
+            console.log("La somma è:", somma," ",quantitaTotale);
+        }
+
         
     </script>
         
@@ -192,21 +220,40 @@
         <h2>Inserimento dati:</h2>
             <span>
               <label for="filter-input-1">Quantità di latte:
-              <input  min="0" type="number" id="filter-input-1" placeholder="Quantità di latte"></label>
+              <input  min="0" type="number" id="gioLav_latteLavo" placeholder="Quantità di latte"></label>
             </span>  
             
             <span>
               <label for="filter-input-2">Latte per formaggio:
-              <input min="0" type="number" id="filter-input-2" placeholder="Latte per formaggio"></label>
+              <input min="0" type="number" id="gioLav_latteFormag" placeholder="Latte per formaggio"></label>
             </span> 
 
             <span>
               <label for="filter-input-3">Forme prodotte:
-              <input min="0" type="number" id="filter-input-3" placeholder="Forme prodotte"></label>
+              <input min="0" type="number" id="gioLav_quanPro" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte"></label>
+            </span>
+
+            <h3>Informazioni sulle forme</h3>
+ 
+            <span>
+                <label>12 Mesi:</label>
+                <input min="0" type="number" id="quantita12" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte 12 mesi">
+            </span>
+            <span>
+                <label>24 Mesi:</label>
+                <input min="0" type="number" id="quantita24" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
+            </span>
+            <span>
+                <label>30 Mesi:</label>
+                <input min="0" type="number" id="quantita30" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
+            </span>
+            <span>
+                <label>36 Mesi:</label>
+                <input min="0" type="number" id="quantita36" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
             </span>
 
             <span>
-            <button type="submit">Invia</button>
+                <button type="submit" id="bottoneInvio">Invia</button>
             </span>
 
             <p class="errore">

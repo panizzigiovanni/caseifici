@@ -75,7 +75,7 @@
             border-radius: 10px;
             color:#FFC94A;
             margin:20px; 
-
+            min-width: 90%
         }
 
         .divsopra {
@@ -146,8 +146,16 @@
 
         .div-vendita{
 
-            display: flex;
-            ;
+            
+            
+        }
+
+        .spazio-superiore {
+            margin-top: 10px;
+        }
+
+        .spazio-inferiore{
+            margin-bottom: 10px;
         }
         
     </style>
@@ -184,22 +192,28 @@
         <div class="divgrande">   
             <div class="divsopra">
                 <h3>Vendita</h3>
-                <form class="div-vendita">
-                    
-                    <label for="date-input">Date:</label>
-                    <input type="date" id="date-input" name="date-input">
-                    
-
-                    
-                    <label for="text-input">Text:</label>
-                    <input type="text" id="text-input" name="text-input">
-                    
-
-                   
-                    <label for="item-input">Item:</label>
-                    <input type="number" id="item-input" name="item-input">
-                    
-                    <button type="submit">Vendi</button>
+                <form>
+                    <div class="spazio-superiore">
+                        <label for="date-input">Data:</label>
+                        <input type="date" id="date-input" name="date-input">
+                        <br>
+                    </div>
+                
+                    <div class="spazio-superiore">
+                        <label for="text-input">Testo:</label>
+                        <input type="text" id="text-input" name="text-input">
+                        <br>
+                    </div>
+                
+                    <div class="spazio-superiore">
+                        <label for="item-input">Elemento:</label>
+                        <input type="number" id="item-input" name="item-input">
+                        <br>
+                    </div>
+                
+                    <div class="spazio-superiore">
+                        <button type="submit">Vendi</button>
+                    </div>
                   </form>
             </div>
 
