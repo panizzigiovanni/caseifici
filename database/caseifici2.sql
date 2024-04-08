@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 04, 2024 alle 09:58
--- Versione del server: 10.4.10-MariaDB
--- Versione PHP: 7.3.12
+-- Creato il: Apr 08, 2024 alle 16:49
+-- Versione del server: 10.4.28-MariaDB
+-- Versione PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `caseifici`
+-- Database: `caseifici2`
 --
 
 -- --------------------------------------------------------
@@ -37,7 +36,7 @@ CREATE TABLE `caseifici` (
   `cas_NumTel` varchar(12) NOT NULL,
   `cas_pro_Id` int(3) NOT NULL,
   `cas_ut_Id` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -49,7 +48,7 @@ CREATE TABLE `clienti` (
   `cli_Id` int(3) NOT NULL,
   `cli_Nome` varchar(30) NOT NULL,
   `cli_Tipo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -65,7 +64,7 @@ CREATE TABLE `forme` (
   `for_Stagionatura` varchar(8) NOT NULL,
   `for_Scelta` tinyint(1) NOT NULL,
   `for_cas_Id` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -77,7 +76,7 @@ CREATE TABLE `fotografie` (
   `fot_Id` int(9) NOT NULL,
   `fot_Percorso` varchar(255) NOT NULL,
   `fot_cas_Id` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -93,7 +92,7 @@ CREATE TABLE `giornatelav` (
   `gioLav_QuaPro` int(3) NOT NULL,
   `gioLav_QuaVend` int(4) NOT NULL,
   `gioLav_cas_Id` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -105,7 +104,7 @@ CREATE TABLE `province` (
   `pro_Id` int(3) NOT NULL,
   `pro_Sigla` varchar(2) NOT NULL,
   `pro_Regione` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -119,7 +118,18 @@ CREATE TABLE `utenti` (
   `ut_password` varchar(255) NOT NULL,
   `ut_nome` varchar(20) NOT NULL,
   `ut_cognome` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `utenti`
+--
+
+INSERT INTO `utenti` (`ut_Id`, `ut_username`, `ut_password`, `ut_nome`, `ut_cognome`) VALUES
+(1, 'user1', 'password1', 'Mario', 'Rossi'),
+(2, 'user2', 'password2', 'Luca', 'Bianchi'),
+(3, 'user3', 'password3', 'Giulia', 'Ferrari'),
+(4, 'user4', 'password4', 'Alessia', 'Rizzo'),
+(5, 'user5', 'password5', 'Marco', 'Conti');
 
 -- --------------------------------------------------------
 
@@ -132,7 +142,7 @@ CREATE TABLE `vendite` (
   `ven_Data` date NOT NULL,
   `ven_for_Id` int(10) NOT NULL,
   `ven_cli_Id` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indici per le tabelle scaricate
@@ -143,7 +153,8 @@ CREATE TABLE `vendite` (
 --
 ALTER TABLE `caseifici`
   ADD PRIMARY KEY (`cas_Id`),
-  ADD KEY `fk_cas_pro_Id` (`cas_pro_Id`);
+  ADD KEY `fk_cas_pro_Id` (`cas_pro_Id`),
+  ADD KEY `cas_ut_Id` (`cas_ut_Id`);
 
 --
 -- Indici per le tabelle `clienti`
@@ -236,7 +247,7 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `ut_Id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `ut_Id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `vendite`
@@ -252,6 +263,7 @@ ALTER TABLE `vendite`
 -- Limiti per la tabella `caseifici`
 --
 ALTER TABLE `caseifici`
+  ADD CONSTRAINT `caseifici_ibfk_1` FOREIGN KEY (`cas_ut_Id`) REFERENCES `utenti` (`ut_Id`),
   ADD CONSTRAINT `fk_cas_pro_Id` FOREIGN KEY (`cas_pro_Id`) REFERENCES `province` (`pro_Id`);
 
 --
