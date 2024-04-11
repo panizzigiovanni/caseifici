@@ -1,6 +1,7 @@
 
 <?php 
-    include "connection.php";  
+    include "connection.php"; 
+    session_start(); 
 ?>
 
 
@@ -37,30 +38,6 @@
             color: #FFC94A;
         }
 
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown select {
-            background-color: #795458;
-            color: gold;
-            border: none;
-            padding: 5px;
-            font-size: 16px;
-            appearance: none;
-            cursor: pointer;
-        }
-
-        .dropdown::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%) rotate(180deg);
-            border-left: 5px solid gold;
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-        }
 
         .buttons {
             display: flex;
@@ -96,8 +73,8 @@
         .card {
             background-color: #FFFEEF;
             color: #333;
-            width: 300px;
-            height: 400px;
+            width: 250px;
+            height: 350px;
             margin: 10px;
             display: flex;
             flex-direction: column;
@@ -131,10 +108,10 @@
         <div class="button-container">
             <?php 
                 if(isset($_SESSION['codiceCaseificio'])){
-
+                    
                     echo'<a class="button" href="menuparteRiservata.php">Parte Riservata</a>';
                 }
-
+                
             ?>
             <a class="button" href="login.php">Login</a>
         </div>
@@ -150,12 +127,25 @@
 
             while($arrayAssocCaseifici=$resulCaseifici->fetch_assoc()){
                 foreach ($arrayAssocCaseifici as $attributo=>$valore) {
-                                echo '<div class="card">';
-                                echo '<img src="download.jpg" alt="image">';
-                                echo '<h2>'.$value["cas_NomeCaseificio"].'</h2>';
-                                echo '<p>'.$value["cas_Des"].'</p>';  
-                            }
+                   
+                    if($attributo=='cas_NomeCaseificio'){
+                       $nome=$valore;
+                    }else if($attributo=='cas_NomeTitolare'){
+                        $nomeCapo=$valore;
+                    }else if($attributo=='cas_Id'){
+                        $id= $valore;
+                    }
+                   
+                }
 
+                
+                echo '<div class="card">';
+                echo '<img src="download.jpg" alt="image">';
+                echo '<h2>'.$nome.'</h2>';
+                echo '<p>'.$nomeCapo.'</p>';
+                echo '<a class="button" href="caseificioTourDigi.php?codCaseificio='.$id.'">Scopri di piu</a>';
+                echo '</div>';
+                
             }
 
 
@@ -170,13 +160,6 @@
             <p>Description line 2</p>
         </div>
         -->
-
-        <div class="card">
-            <img src="your-image-url" alt="image">
-            <h2>Card Title</h2>
-            <p>Description line 1</p>
-            <p>Description line 2</p>
-        </div> 
     </div>
 
 </body>

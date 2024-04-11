@@ -72,6 +72,7 @@
                             $row2=$resul2->fetch_assoc();
 
                             $_SESSION['codiceCaseificio']=$row2['cas_Id'];
+                            echo $_SESSION['codiceCaseificio'];
 
                             header("Location: index.php");
                             exit();

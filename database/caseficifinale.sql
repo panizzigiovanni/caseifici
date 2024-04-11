@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 11, 2024 alle 09:02
--- Versione del server: 10.4.27-MariaDB
--- Versione PHP: 8.2.0
+-- Creato il: Apr 11, 2024 alle 14:48
+-- Versione del server: 10.4.28-MariaDB
+-- Versione PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `caseifici`
+-- Database: `caseficifinale`
 --
 
 -- --------------------------------------------------------
@@ -35,29 +35,30 @@ CREATE TABLE `caseifici` (
   `cas_Des` varchar(160) NOT NULL,
   `cas_NumTel` varchar(12) NOT NULL,
   `cas_pro_Id` int(3) NOT NULL,
-  `cas_ut_Id` int(5) NOT NULL
+  `cas_ut_Id` int(5) NOT NULL,
+  `cas_linkGoogleMaps` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `caseifici`
 --
 
-INSERT INTO `caseifici` (`cas_Id`, `cas_NomeCaseificio`, `cas_Indirizzo`, `cas_NomeTitolare`, `cas_Des`, `cas_NumTel`, `cas_pro_Id`, `cas_ut_Id`) VALUES
-(1, 'Caseificio Uno', 'Via Roma 1', 'Giovanni Rossi', 'Produzione di formaggi tradizionali', '1234567890', 1, 1),
-(2, 'Caseificio Due', 'Via Milano 2', 'Paola Bianchi', 'Specializzato in formaggi freschi', '0987654321', 2, 2),
-(3, 'Caseificio Tre', 'Via Napoli 3', 'Luigi Ferrari', 'Produce formaggi a latte crudo', '1029384756', 3, 3),
-(4, 'Caseificio Quattro', 'Via Firenze 4', 'Giorgia Rizzo', 'Caseificio biologico con produzione sostenibile', '6758493021', 4, 4),
-(5, 'Caseificio Cinque', 'Via Torino 5', 'Giacomo Conti', 'Ampia varietà di formaggi stagionati', '3749201586', 5, 5),
-(6, 'Caseificio Sei', 'Via Venezia 6', 'Alberto Rossi', 'Caseificio specializzato nella produzione di formaggi freschi', '1234567890', 6, 6),
-(7, 'Caseificio Sette', 'Via Palermo 7', 'Paolo Bianchi', 'Caseificio artigianale che produce formaggi tradizionali', '0987654321', 7, 7),
-(8, 'Caseificio Otto', 'Via Genova 8', 'Giovanna Russo', 'Caseificio familiare con una vasta gamma di formaggi stagionati', '1029384756', 8, 8),
-(9, 'Caseificio Nove', 'Via Bologna 9', 'Giulio Galli', 'Caseificio biologico certificato che produce formaggi a latte crudo', '6758493021', 9, 9),
-(10, 'Caseificio Dieci', 'Via Trieste 10', 'Laura Moretti', 'Caseificio innovativo con formaggi gourmet', '3749201586', 10, 10),
-(11, 'Caseificio Undici', 'Via Trento 11', 'Giovanni Ferri', 'Produzione di formaggi locali di alta qualità', '1234567890', 11, 11),
-(12, 'Caseificio Dodici', 'Via Pisa 12', 'Simona Martini', 'Specialità di formaggi freschi e stagionati', '0987654321', 12, 12),
-(13, 'Caseificio Tredici', 'Via Lecce 13', 'Davide Gallo', 'Caseificio che produce formaggi tipici della regione', '1029384756', 13, 13),
-(14, 'Caseificio Quattordi', 'Via Agrigento 14', 'Sara Fabbri', 'Produzione artigianale di formaggi di montagna', '6758493021', 14, 14),
-(15, 'Caseificio Quindici', 'Via Bolzano 15', 'Matteo Rossini', 'Caseificio con specialità regionali e stagionature uniche', '3749201586', 15, 15);
+INSERT INTO `caseifici` (`cas_Id`, `cas_NomeCaseificio`, `cas_Indirizzo`, `cas_NomeTitolare`, `cas_Des`, `cas_NumTel`, `cas_pro_Id`, `cas_ut_Id`, `cas_linkGoogleMaps`) VALUES
+(1, 'Caseificio Uno', 'Via Roma 1', 'Giovanni Rossi', 'Produzione di formaggi tradizionali', '1234567890', 1, 1, ''),
+(2, 'Caseificio Due', 'Via Milano 2', 'Paola Bianchi', 'Specializzato in formaggi freschi', '0987654321', 2, 2, ''),
+(3, 'Caseificio Tre', 'Via Napoli 3', 'Luigi Ferrari', 'Produce formaggi a latte crudo', '1029384756', 3, 3, ''),
+(4, 'Caseificio Quattro', 'Via Firenze 4', 'Giorgia Rizzo', 'Caseificio biologico con produzione sostenibile', '6758493021', 4, 4, ''),
+(5, 'Caseificio Cinque', 'Via Torino 5', 'Giacomo Conti', 'Ampia varietà di formaggi stagionati', '3749201586', 5, 5, ''),
+(6, 'Caseificio Sei', 'Via Venezia 6', 'Alberto Rossi', 'Caseificio specializzato nella produzione di formaggi freschi', '1234567890', 6, 6, ''),
+(7, 'Caseificio Sette', 'Via Palermo 7', 'Paolo Bianchi', 'Caseificio artigianale che produce formaggi tradizionali', '0987654321', 7, 7, ''),
+(8, 'Caseificio Otto', 'Via Genova 8', 'Giovanna Russo', 'Caseificio familiare con una vasta gamma di formaggi stagionati', '1029384756', 8, 8, ''),
+(9, 'Caseificio Nove', 'Via Bologna 9', 'Giulio Galli', 'Caseificio biologico certificato che produce formaggi a latte crudo', '6758493021', 9, 9, ''),
+(10, 'Caseificio Dieci', 'Via Trieste 10', 'Laura Moretti', 'Caseificio innovativo con formaggi gourmet', '3749201586', 10, 10, ''),
+(11, 'Caseificio Undici', 'Via Trento 11', 'Giovanni Ferri', 'Produzione di formaggi locali di alta qualità', '1234567890', 11, 11, ''),
+(12, 'Caseificio Dodici', 'Via Pisa 12', 'Simona Martini', 'Specialità di formaggi freschi e stagionati', '0987654321', 12, 12, ''),
+(13, 'Caseificio Tredici', 'Via Lecce 13', 'Davide Gallo', 'Caseificio che produce formaggi tipici della regione', '1029384756', 13, 13, ''),
+(14, 'Caseificio Quattordi', 'Via Agrigento 14', 'Sara Fabbri', 'Produzione artigianale di formaggi di montagna', '6758493021', 14, 14, ''),
+(15, 'Caseificio Quindici', 'Via Bolzano 15', 'Matteo Rossini', 'Caseificio con specialità regionali e stagionature uniche', '3749201586', 15, 15, '');
 
 -- --------------------------------------------------------
 
