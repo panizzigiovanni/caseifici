@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 11, 2024 alle 08:41
+-- Creato il: Apr 11, 2024 alle 09:02
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.2.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `caseifici_1`
+-- Database: `caseifici`
 --
 
 -- --------------------------------------------------------
