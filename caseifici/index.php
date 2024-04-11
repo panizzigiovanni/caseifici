@@ -143,13 +143,23 @@
     <div class="container">
         <?php  
         
-        ////SEI ARRIVATO QUI DEVI INSERIRE LE CARD SINGOLARMENTE
+        
             $sqlCaseifici='SELECT * FROM caseifici';
 
             $resulCaseifici=$conn->query($sqlCaseifici);
 
-            $arrayAssocCaseifici=$resulCaseifici->fetch_assoc();
+            while($arrayAssocCaseifici=$resulCaseifici->fetch_assoc()){
+                foreach ($arrayAssocCaseifici as $attributo=>$valore) {
+                                echo '<div class="card">';
+                                echo '<img src="download.jpg" alt="image">';
+                                echo '<h2>'.$value["cas_NomeCaseificio"].'</h2>';
+                                echo '<p>'.$value["cas_Des"].'</p>';  
+                            }
 
+            }
+
+
+            
 
         ?>        
                 

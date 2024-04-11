@@ -3,7 +3,7 @@
     $host="localhost";
     $username="root";
     $pass="";
-    $nomeDB="caseifici2";
+    $nomeDB="caseifici";
 
     $conn = new mysqli($host, $username, $pass, $nomeDB);
     if ($conn->connect_error) {
