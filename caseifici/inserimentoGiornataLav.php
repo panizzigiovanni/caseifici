@@ -169,7 +169,7 @@
             color: #666;
             cursor: not-allowed;
         }
-        
+</style>
     </style>
     <script>
         // Crea una funzione che gestisca l'evento onchange
@@ -192,6 +192,27 @@
             }
 
             console.log("La somma è:", somma," ",quantitaTotale);
+        }
+
+        function handleQuantitaLatte(){
+            let quantitalatteLavo = parseInt(document.getElementById("gioLav_latteLavo").value);
+            let quantitalatteForm = parseInt(document.getElementById("gioLav_latteFormag").value);
+            if(quantitalatteLavo>=quantitalatteForm){
+                console.log("La somma è:", quantitalatteLavo," ",quantitalatteForm);
+                console.log("ABILITATO")
+                document.getElementById("bottoneInvio").disabled = false;
+                document.getElementById("bottoneInvio").classList.remove("bottone-disabilitato");
+
+            }else{
+                console.log("La somma è:", quantitalatteLavo," ",quantitalatteForm);
+                console.log("DISABILITATO")
+                document.getElementById("bottoneInvio").disabled = true;
+                document.getElementById("invio").classList.add("bottone-disabilitato");
+            }
+            
+            
+            
+
         }
 
         
@@ -245,7 +266,11 @@
                     
                 }else{
                     $_SESSION['radice']="U";
-                    $row=$resul->fetch_assoc();
+
+                    $row =$resul->fetch_assoc();
+
+                    $gioLav_LatteLavo = $row['gioLav_LatteLavo'];
+                    $gioLav_LatteFormag = $row['gioLav_LatteFormag'];
 
                 }
             }
@@ -253,16 +278,16 @@
         ?>
         
        
-        <form action="reind.php "id="filter-form"method="get">
+        <form action="reind.php?data=<?php echo $data ?>" id="filter-form" method="post">
         <h2>Inserimento dati:</h2>
             <span>
               <label for="filter-input-1">Quantità di latte:
-              <input  min="0" type="number" id="gioLav_latteLavo" name="gioLav_latteLavo" placeholder="Quantità di latte"></label>
+              <input  min="0" type="number" <?php echo isset($gioLav_LatteLavo)? 'value='.$gioLav_LatteLavo:''?> onchange="handleQuantitaLatte(event)" id="gioLav_latteLavo" name="gioLav_latteLavo" placeholder="Quantità di latte"></label>
             </span>  
             
             <span>
               <label for="filter-input-2">Latte per formaggio:
-              <input min="0" type="number" id="gioLav_latteFormag" name="gioLav_latteFormag" placeholder="Latte per formaggio"></label>
+              <input min="0" type="number" <?php echo isset($gioLav_LatteFormag)? 'value='.$gioLav_LatteFormag:''?> onchange="handleQuantitaLatte(event)" id="gioLav_latteFormag" name="gioLav_latteFormag" placeholder="Latte per formaggio"></label>
             </span> 
 
             <span>
@@ -278,23 +303,23 @@
             </span>
             <span>
                 <label>24 Mesi:</label>
-                <input min="0" type="number" id="quantita24" name="quantita24" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
+                <input min="0" type="number" id="quantita24" name="quantita24" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte 24 Mesi">
             </span>
             <span>
                 <label>30 Mesi:</label>
-                <input min="0" type="number" id="quantita30" name="quantita30" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
+                <input min="0" type="number" id="quantita30" name="quantita30" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte 30 Mesi">
             </span>
             <span>
                 <label>36 Mesi:</label>
-                <input min="0" type="number" id="quantita36" name="quantita36" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
+                <input min="0" type="number" id="quantita36" name="quantita36" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte 36 Mesi">
             </span>
 
             <span>
                 <button type="submit" id="bottoneInvio">Invia</button>
             </span>
 
-            <p class="errore">
-                Errore di....
+            <p <?php echo isset($_GET['response'])? $_GET['response']=='ok'? 'class="errore"':'' : 'class="errore"'?>>
+                Errore di <?php echo $_GET['response'] ?>
             </p>
           </form>
         
