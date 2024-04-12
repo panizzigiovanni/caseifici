@@ -147,21 +147,21 @@ CREATE TABLE `fotografie` (
 --
 
 INSERT INTO `fotografie` (`fot_Id`, `fot_Percorso`, `fot_cas_Id`) VALUES
-(1, '/percorso/immagine1.jpg', 1),
-(2, '/percorso/immagine2.jpg', 2),
-(3, '/percorso/immagine3.jpg', 3),
-(4, '/percorso/immagine4.jpg', 4),
-(5, '/percorso/immagine5.jpg', 5),
-(6, '/percorso/immagine6.jpg', 6),
-(7, '/percorso/immagine7.jpg', 7),
-(8, '/percorso/immagine8.jpg', 8),
-(9, '/percorso/immagine9.jpg', 9),
-(10, '/percorso/immagine10.jpg', 10),
-(11, '/percorso/immagine11.jpg', 11),
-(12, '/percorso/immagine12.jpg', 12),
-(13, '/percorso/immagine13.jpg', 13),
-(14, '/percorso/immagine14.jpg', 14),
-(15, '/percorso/immagine15.jpg', 15);
+(1, 'caseifici\\caseifici\\immagini\\cas1.jpg', 1),
+(2, 'caseifici\\caseifici\\immagini\\cas12.jpg', 2),
+(3, 'caseifici\\caseifici\\immagini\\cas2.jpg', 3),
+(4, 'caseifici\\caseifici\\immagini\\cas3.jpg', 4),
+(5, 'caseifici\\caseifici\\immagini\\cas5.jpg', 5),
+(6, 'caseifici\\caseifici\\immagini\\cas4.jpg', 6),
+(7, 'caseifici\\caseifici\\immagini\\cas8.jpg', 7),
+(8, 'caseifici\\caseifici\\immagini\\cas7.jpg', 8),
+(9, 'caseifici\\caseifici\\immagini\\cas6.jpg', 9),
+(10, 'caseifici\\caseifici\\immagini\\cas11.jpg', 10),
+(11, 'caseifici\\caseifici\\immagini\\cas9.jpeg', 11),
+(12, 'caseifici\\caseifici\\immagini\\cas10.jpg', 12),
+(13, 'caseifici\\caseifici\\immagini\\cas15.jpg', 13),
+(14, 'caseifici\\caseifici\\immagini\\cas13.jpg', 14),
+(15, 'caseifici\\caseifici\\immagini\\cas16.jpg', 15);
 
 -- --------------------------------------------------------
 
