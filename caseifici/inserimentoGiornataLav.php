@@ -10,7 +10,7 @@
 
     function getCurrentDay() {
         $currentDate = new DateTime();
-        return $currentDate->format('d/m/Y');
+        return $currentDate->format('d-m-Y');
     }
 ?>
 
@@ -172,15 +172,6 @@
         
     </style>
     <script>
-        // Get the input element
-        //document.addEventListener("DOMContentLoaded", function () {
-            // Get the input element
-            //const dateInput = document.getElementById("date-input");
-
-            // Set the value to the current date
-            //dateInput.value = new Date().toISOString().slice(0, 10);
-        //});
-
         // Crea una funzione che gestisca l'evento onchange
         function handleQuantitaChange(){
             const quantitaTotale= document.getElementById("gioLav_quanPro").value;
@@ -232,66 +223,70 @@
 
         <div class="date-input-container">
             <h2>Giornata:</h2>
+            <?php 
+                $oggi=getCurrentDay();
+                isset($_GET['dataQuery']) ? $data=$_GET['dataQuery'] : $data=$oggi;
+            ?>
+            
+            
             <form action="inserimentoGiornataLav.php" method="get">
-                <input type="date" id="dataOggi" value="<?php echo isset($_GET['dataOggi']) ? htmlspecialchars($_GET['dataOggi'])  : ''; 
-                                                                isset($_GET['dataOggi']) ? $dataAt= $_GET['dataOggi'] : '';
-                                                        ?>">
+                <input type="date" id="dataQuery" name="dataQuery" value="<?php echo $data;?>" >
                 <button type="submit" class="bottoneInvioDate">Applica</button>
             </form>
         </div>
 
         <?php 
-            
-            $sql='SELECT * FROM giornatelav WHERE gioLav_cas_Id='.$_SESSION[ "codiceCaseificio"].' AND gioLav_date = '.$dataAt;
-            $resul=$conn->query($sql);
-            if (empty($resul) || $resul->num_rows == 0) {
-                // Query result is empty or null
-                echo "No data found.";
-                echo $_SESSION[ "codiceCaseificio"].' ';
-                
-            }else{
-                $row=$resul->fetch_assoc();
+            if(isset($_GET['dataQuery'])){
+               
+                $sql='SELECT * FROM giornatelav WHERE gioLav_cas_Id='.$_SESSION[ "codiceCaseificio"].' AND gioLav_date="'.$data.'"';
+                $resul=$conn->query($sql);
+                if (empty($resul) || $resul->num_rows == 0) {
+                    $_SESSION['radice']="I";
+                    
+                }else{
+                    $_SESSION['radice']="U";
+                    $row=$resul->fetch_assoc();
 
+                }
             }
-            
         
         ?>
         
        
-        <form id="filter-form">
+        <form action="reind.php "id="filter-form"method="get">
         <h2>Inserimento dati:</h2>
             <span>
               <label for="filter-input-1">Quantità di latte:
-              <input  min="0" type="number" id="gioLav_latteLavo" placeholder="Quantità di latte"></label>
+              <input  min="0" type="number" id="gioLav_latteLavo" name="gioLav_latteLavo" placeholder="Quantità di latte"></label>
             </span>  
             
             <span>
               <label for="filter-input-2">Latte per formaggio:
-              <input min="0" type="number" id="gioLav_latteFormag" placeholder="Latte per formaggio"></label>
+              <input min="0" type="number" id="gioLav_latteFormag" name="gioLav_latteFormag" placeholder="Latte per formaggio"></label>
             </span> 
 
             <span>
               <label for="filter-input-3">Forme prodotte:
-              <input min="0" type="number" id="gioLav_quanPro" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte"></label>
+              <input min="0" type="number" id="gioLav_quanPro" name="gioLav_quanPro" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte"></label>
             </span>
 
             <h3>Informazioni sulle forme</h3>
  
             <span>
                 <label>12 Mesi:</label>
-                <input min="0" type="number" id="quantita12" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte 12 mesi">
+                <input min="0" type="number" id="quantita12" name="quantita12" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte 12 mesi">
             </span>
             <span>
                 <label>24 Mesi:</label>
-                <input min="0" type="number" id="quantita24" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
+                <input min="0" type="number" id="quantita24" name="quantita24" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
             </span>
             <span>
                 <label>30 Mesi:</label>
-                <input min="0" type="number" id="quantita30" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
+                <input min="0" type="number" id="quantita30" name="quantita30" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
             </span>
             <span>
                 <label>36 Mesi:</label>
-                <input min="0" type="number" id="quantita36" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
+                <input min="0" type="number" id="quantita36" name="quantita36" onchange="handleQuantitaChange(event)" placeholder="Forme prodotte">
             </span>
 
             <span>

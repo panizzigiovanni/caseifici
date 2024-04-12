@@ -11,7 +11,7 @@
 
     function getCurrentDay() {
         $currentDate = new DateTime();
-        return $currentDate->format('d/m/Y');
+        return $currentDate->format('Y-m-d');
     }
 ?>
 
@@ -134,7 +134,7 @@
 
         <?php  
             $oggi=getCurrentDay();
-            echo '<a href=inserimentoGiornataLav.php?dataOggi="'.$oggi.'">';
+            echo '<a href=inserimentoGiornataLav.php?dataQuery='.$oggi.'>';
            
         ?>        
         <button type="button" class="bottoneGenerico">Inserisci Giornata Lavorativa</button>
