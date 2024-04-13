@@ -8,6 +8,8 @@
         exit();
     }
 
+    $caseificio_id=$_SESSION['codiceCaseificio'];
+
     function getCurrentDay() {
         $currentDate = new DateTime();
         return $currentDate->format('d-m-Y');
@@ -206,15 +208,6 @@
         
     </style>
     <script>
-        // Get the input element
-        document.addEventListener("DOMContentLoaded", function () {
-        // Get the input element
-        const dateInput = document.getElementById("date-input");
-
-        // Set the value to the current date
-        dateInput.value = new Date().toISOString().slice(0, 10);
-        });
-        
     </script>
         
 </head>
@@ -228,8 +221,14 @@
         <h1>Consorizio Caseifici</h1>
         
         <div class="button-containers">
-            <a class="button" href="#">Parte Riservata</a>
-            <a class="button" href="#">Login</a>
+        <?php 
+                if(isset($_SESSION['codiceCaseificio'])){
+                    
+                    echo'<a class="button" href="menuparteRiservata.php">Parte Riservata</a>';
+                }
+                
+            ?>
+            <a class="button" href="login.php">Login</a>
         </div>
     </div>
     
@@ -251,15 +250,71 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>12/43/32</td>
-                        <td>Beppino</td>
-                        <td>353</td>
-                        <td>12 Mesi</td>
-                        
-                    
-                    </tr>
-                <!-- Add more rows as needed -->
+                    <?php
+                       $query = "SELECT v.*, f.for_Stagionatura
+                       FROM vendite v
+                       JOIN forme f ON v.ven_for_Id = f.for_Id
+                       WHERE f.for_cas_Id = ".$caseificio_id; // Sostituisci $caseificio_id con l'ID del caseificio desiderato
+
+                       // Eseguiamo la query
+                       $result = $conn->query($query);
+
+                       $query2 = "SELECT cli_Id, cli_Nome FROM clienti";
+
+                        // Esecuzione della query
+                        $result2 = $conn->query($query2);
+
+                        // Inizializzazione dell'array associativo
+                        $clienteArray = array();
+
+                        // Se ci sono risultati, li memorizziamo nell'array associativo
+                        if ($result2->num_rows > 0) {
+                            while ($row = $result2->fetch_assoc()) {
+                                // Chiave: ID del cliente, Valore: Nome del cliente
+                                $clienteArray[$row['cli_Id']] = $row['cli_Nome'];
+                            }
+                        }
+
+                        $query3 = "SELECT for_Id, for_Stagionatura FROM forme WHERE for_cas_Id=".$caseificio_id;
+
+                        // Esecuzione della query
+                        $result3 = $conn->query($query3);
+
+                        // Inizializzazione dell'array associativo
+                        $formeArray = array();
+
+                        // Se ci sono risultati, li memorizziamo nell'array associativo
+                        if ($result3->num_rows > 0) {
+                            while ($row = $result3->fetch_assoc()) {
+                                // Chiave: ID della forma, Valore: Stagionatura della forma
+                                $formeArray[$row['for_Id']] = $row['for_Stagionatura'];
+                            }
+                        }
+                       
+                        // Se ci sono risultati, li salviamo in variabili
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                foreach($row as $key => $val ){
+                                    if($key=='ven_Data'){
+                                        $data=$val;
+                                    }else if($key=='ven_cli_Id'){
+                                        $idCliente=$val;
+                                    }else if($key=='ven_for_Id'){
+                                        $stag=$val;
+                                    }
+                                }
+                                echo '<tr>';
+                                echo "<td>".$data."</td>";
+                                echo "<td>".$clienteArray[$idCliente]."</td>";
+                                echo "<td>".$stag."</td>";
+                                echo "<td>".$formeArray[$stag]."</td>";
+                                echo '</tr>';
+                            }
+                        }
+
+
+
+                    ?>
                 </tbody>
             </table>
           

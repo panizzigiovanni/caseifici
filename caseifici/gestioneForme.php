@@ -283,7 +283,7 @@
                                             break;
                                         case "for_Scelta":
                                             $scelta = $valore;
-                                            $valore=='1'? $scelta ='Prima Scelta' : $scelta ='SecondaScelta';
+                                            $valore=='1'? $scelta ='Prima Scelta' : $scelta ='Seconda Scelta';
                                             break;
                                         case "for_Venduta":
                                             $venduta = $valore;

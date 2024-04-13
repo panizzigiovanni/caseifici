@@ -125,6 +125,10 @@
             default:
                 break;
         }
+
+        header("Location: gestioneForme.php");
+        exit();
+
     }
 
 
