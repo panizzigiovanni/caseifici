@@ -25,11 +25,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
+            width: 99%;
             z-index: 1000;
         }
 
@@ -74,20 +70,21 @@
             background-color: #FFFEEF;
             color: #333;
             width: 250px;
-            height: 350px;
+            height: 250px;
             margin: 10px;
             display: flex;
+            gap: 10px;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             border: 2px solid #FFC94A;
             border-radius: 20px;
-            padding: 15px;
+            padding: 10px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         }
 
         .card-content {
-            padding: 10px;
+            padding: 5px;
         }
 
         .card img {
@@ -125,6 +122,7 @@
 
             $resulCaseifici=$conn->query($sqlCaseifici);
 
+
             while($arrayAssocCaseifici=$resulCaseifici->fetch_assoc()){
                 foreach ($arrayAssocCaseifici as $attributo=>$valore) {
                    
@@ -134,15 +132,18 @@
                         $nomeCapo=$valore;
                     }else if($attributo=='cas_Id'){
                         $id= $valore;
+                    }else if($attributo=='cas_Indirizzo'){
+                        $indirizzo = $valore;
                     }
                    
                 }
 
                 
                 echo '<div class="card">';
-                echo '<img src="download.jpg" alt="image">';
+                //echo '<img src="download.jpg" alt="image">';
                 echo '<h2>'.$nome.'</h2>';
-                echo '<p>'.$nomeCapo.'</p>';
+                echo '<a>Titolare: '.$nomeCapo.'</a>';
+                echo '<a>Indirizzo: '.$indirizzo.'</a>';
                 echo '<a class="button" href="caseificioTourDigi.php?codCaseificio='.$id.'">Scopri di piu</a>';
                 echo '</div>';
                 

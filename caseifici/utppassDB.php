@@ -19,6 +19,11 @@
             width: 400px;
             margin: 50px auto;
             box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .submit-btn {
             margin-top: 20px;
@@ -87,8 +92,10 @@
                         
                 }else{
                         echo "Account non esistente";
+                        
                 }
-
+                echo '</br>';
+                echo '<a href="login.php"><button type="button" class="bottonifigi">Riprova</button></a>';
                
                 $conn->close();
         ?>
