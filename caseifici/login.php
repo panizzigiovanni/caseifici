@@ -5,36 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
     <style>
-        body {
-            background-color: #f0f0f0;
+         body {
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #453F78;
+            
         }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+        }
+
         .login-container {
-            background-color: #ffffff;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+            background-color: #FFFEEF;
             border-radius: 10px;
             padding: 30px;
             width: 400px;
             margin: 50px auto;
             box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+            border: 2px solid #FFC94A;
+            border-radius: 20px;
         }
         .submit-btn {
             margin-top: 20px;
+            justify-content: center;
         }
         .bottonifigi {
-            background-color: #1c94e0;
-            color: #ffffff;
+            background-color: #FFC94A;
             border: none;
-            border-radius: 5px;
             padding: 10px 20px;
+            color: #333;
+            margin-left: 10px;
+            font-size: 16px;
             cursor: pointer;
-            margin-top: 10px;
+            border-radius: 10px; /* Make the buttons rounded */
+            text-decoration: none;
         }
-        .bottonifigi:hover {
-            background-color: #1572a7;
-        }
+       
     </style>
 </head>
 <body>
@@ -54,7 +68,7 @@
             </div>
             
             <div class="submit-btn">
-                <input type="submit" value="Login" class="btn btn-primary btn-block"/>
+                <input type="submit" value="Login" class="btn btn-block bottonifigi"/>
             </div>  
         </form>
 

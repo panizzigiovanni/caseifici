@@ -1,5 +1,6 @@
 <?php 
     include "connection.php";  
+    session_start();
 ?>
 
 <html lang="it">
@@ -79,6 +80,31 @@
             margin-left:60%
             
         }
+
+        .containerImmagini {
+            display: flex;
+            justify-content: center;
+            background-color: #FFFEEF;
+            margin: 20px;
+            border: 2px solid #FFC94A;
+            border-radius: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .image {
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            margin: 10px;
+            border: 2px solid #FFC94A;
+            border-radius: 20px;
+        }
         
     </style>
 
@@ -94,6 +120,7 @@
         <h1>Consorizio Caseifici</h1>
         
         <div class="button-containers">
+        <a class="button" href="index.php">Homepage</a>
         <?php 
                 if(isset($_SESSION['codiceCaseificio'])){
 
@@ -109,6 +136,8 @@
 
         <div class="dairy-info">
             <?php
+                
+
                 $sqlCaseifici='SELECT * FROM caseifici WHERE  cas_Id= '.$_GET["codCaseificio"];    
 
                 $resulCaseificio=$conn->query($sqlCaseifici);
@@ -126,36 +155,48 @@
                         $link=$valore;
                      }else if($attributo=='cas_Indirizzo'){
                         $indi=$valore;
+                     }else if($attributo=='cas_pro_Id'){
+                        $idPro=$valore;
                      }
 
                 }
+                
+                $slqPro= "SELECT pro_Sigla FROM province WHERE pro_Id=".$idPro;
+
+                $resulPro=$conn->query($slqPro);
+
+                $arrayAssocPro=$resulPro->fetch_assoc();
+
+                $siglaPro=$arrayAssocPro['pro_Sigla'];
 
                 echo '<h2>'.$nome.'</h2>';
                 echo '<p>'.$des.'</p>';
-                echo 'Indirizzo:'.$indi;
+                echo 'Indirizzo:'.$indi.' Provincia:'.$siglaPro;
                 echo '<iframe class="map" src="'.$link.'" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
                 
             ?>
 
 
-            </div>
+            
 
-        <!--<div class="slider-container">
-            <span id="slider-image-1"></span>
-            <span id="slider-image-2"></span>
-            <span id="slider-image-3"></span>
-            <div class="image-container">
-                <img src="csm_wandern-pause_a36d3d7b79.jpg" class="slider-image" />
-                <img src="csm_familie_65b9cde00b.jpg" class="slider-image" />
-                <img src="csm_wandern4_1dab218aca.jpg" class="slider-image" />
+            <div class="containerImmagini">
+                <div class="image-container">
+                    <?php 
+                        $sqlImmagini='SELECT fot_Percorso FROM fotografie WHERE fot_cas_Id='.$_GET["codCaseificio"];
+
+                        $resulFoto=$conn->query($sqlImmagini);
+
+                        while($arrayAssocFoto=$resulFoto->fetch_assoc()){
+                            $percorso=$arrayAssocFoto['fot_Percorso'];
+                            echo '<img src="'.$percorso.'" alt="'.$percorso.'" class="image">';
+                        }
+                    ?>
+
+                  
+
+                </div>
             </div>
-            <div class="button-container">
-                <a href="#slider-image-1" class="slider-change"></a>
-                <a href="#slider-image-2" class="slider-change"></a>
-                <a href="#slider-image-3" class="slider-change"></a>
-            </div>
-        </div>-->
-        
+        </div>
 
         
         

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 11, 2024 alle 14:48
--- Versione del server: 10.4.28-MariaDB
--- Versione PHP: 8.2.4
+-- Creato il: Apr 14, 2024 alle 11:58
+-- Versione del server: 10.4.32-MariaDB
+-- Versione PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `caseficifinale`
+-- Database: `caseificifinale`
 --
 
 -- --------------------------------------------------------
@@ -114,21 +114,32 @@ CREATE TABLE `forme` (
 --
 
 INSERT INTO `forme` (`for_Id`, `for_DataProduzione`, `for_Venduta`, `for_Progressivo`, `for_Stagionatura`, `for_Scelta`, `for_cas_Id`) VALUES
-(1, '2024-03-01', 1, 1001, '12', 1, 1),
+(1, '2024-03-01', 1, 1001, '12', 0, 1),
 (2, '2024-03-02', 1, 1002, '16', 1, 2),
 (3, '2024-03-03', 1, 1003, '24', 1, 3),
 (4, '2024-03-04', 1, 1004, '16', 1, 4),
 (5, '2024-03-05', 1, 1005, '24', 1, 5),
 (6, '2024-03-06', 1, 1006, '12', 1, 6),
 (7, '2024-03-07', 1, 1007, '16', 1, 7),
-(8, '2024-03-08', 1, 1008, '24', 8, 8),
 (9, '2024-03-09', 1, 1009, '12', 1, 9),
-(10, '2024-03-10', 1, 1010, '16', 9, 10),
 (11, '2024-03-11', 1, 1011, '12', 1, 11),
 (12, '2024-03-12', 1, 1012, '24', 1, 12),
 (13, '2024-03-13', 1, 1013, '12', 1, 13),
 (14, '2024-03-14', 1, 1014, '24', 1, 14),
-(15, '2024-03-15', 1, 1015, '12', 1, 15);
+(15, '2024-03-15', 1, 1015, '12', 1, 15),
+(30, '2024-04-12', 1, 0, '12', 1, 1),
+(31, '2024-04-12', 1, 1, '24', 1, 1),
+(33, '2024-04-12', 1, 3, '36', 1, 1),
+(34, '2024-04-12', 1, 4, '36', 1, 1),
+(35, '2024-04-13', 0, 4, '12', 1, 1),
+(36, '2024-04-13', 0, 5, '12', 1, 1),
+(37, '2024-04-13', 1, 6, '12', 1, 1),
+(38, '2024-04-13', 1, 7, '12', 1, 1),
+(39, '2024-04-13', 0, 8, '12', 1, 1),
+(40, '2024-04-13', 0, 9, '24', 0, 1),
+(41, '2024-04-13', 1, 10, '24', 1, 1),
+(42, '2024-04-13', 1, 11, '24', 1, 1),
+(44, '2024-04-13', 1, 13, '36', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -147,21 +158,21 @@ CREATE TABLE `fotografie` (
 --
 
 INSERT INTO `fotografie` (`fot_Id`, `fot_Percorso`, `fot_cas_Id`) VALUES
-(1, 'caseifici\\caseifici\\immagini\\cas1.jpg', 1),
-(2, 'caseifici\\caseifici\\immagini\\cas12.jpg', 2),
-(3, 'caseifici\\caseifici\\immagini\\cas2.jpg', 3),
-(4, 'caseifici\\caseifici\\immagini\\cas3.jpg', 4),
-(5, 'caseifici\\caseifici\\immagini\\cas5.jpg', 5),
-(6, 'caseifici\\caseifici\\immagini\\cas4.jpg', 6),
-(7, 'caseifici\\caseifici\\immagini\\cas8.jpg', 7),
-(8, 'caseifici\\caseifici\\immagini\\cas7.jpg', 8),
-(9, 'caseifici\\caseifici\\immagini\\cas6.jpg', 9),
-(10, 'caseifici\\caseifici\\immagini\\cas11.jpg', 10),
-(11, 'caseifici\\caseifici\\immagini\\cas9.jpeg', 11),
-(12, 'caseifici\\caseifici\\immagini\\cas10.jpg', 12),
-(13, 'caseifici\\caseifici\\immagini\\cas15.jpg', 13),
-(14, 'caseifici\\caseifici\\immagini\\cas13.jpg', 14),
-(15, 'caseifici\\caseifici\\immagini\\cas16.jpg', 15);
+(1, 'immagini\\cas1.jpg', 1),
+(2, 'immagini\\cas12.jpg', 2),
+(3, 'immagini\\cas2.jpg', 3),
+(4, 'immagini\\cas3.jpg', 4),
+(5, 'immagini\\cas5.jpg', 5),
+(6, 'immagini\\cas4.jpg', 6),
+(7, 'immagini\\cas8.jpg', 7),
+(8, 'immagini\\cas7.jpg', 8),
+(9, 'immagini\\cas6.jpg', 9),
+(10, 'immagini\\cas11.jpg', 10),
+(11, 'immagini\\cas9.jpeg', 11),
+(12, 'immagini\\cas10.jpg', 12),
+(13, 'immagini\\cas15.jpg', 13),
+(14, 'immagini\\cas13.jpg', 14),
+(15, 'immagini\\cas16.jpg', 15);
 
 -- --------------------------------------------------------
 
@@ -184,7 +195,6 @@ CREATE TABLE `giornatelav` (
 --
 
 INSERT INTO `giornatelav` (`gioLav_Id`, `gioLav_date`, `gioLav_LatteLavo`, `gioLav_LatteFormag`, `gioLav_QuaPro`, `gioLav_QuaVend`, `gioLav_cas_Id`) VALUES
-(1, '2024-03-01', 1000, 500, 200, 300, 1),
 (2, '2024-03-02', 1200, 600, 250, 350, 2),
 (3, '2024-03-03', 1100, 550, 210, 320, 3),
 (4, '2024-03-04', 1050, 520, 220, 330, 4),
@@ -198,7 +208,8 @@ INSERT INTO `giornatelav` (`gioLav_Id`, `gioLav_date`, `gioLav_LatteLavo`, `gioL
 (12, '2024-03-12', 1080, 540, 220, 330, 12),
 (13, '2024-03-13', 1280, 640, 250, 350, 13),
 (14, '2024-03-14', 1070, 535, 215, 325, 14),
-(15, '2024-03-15', 1350, 675, 270, 405, 15);
+(15, '2024-03-15', 1350, 675, 270, 405, 15),
+(36, '2024-04-13', 100, 80, 10, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -286,21 +297,27 @@ CREATE TABLE `vendite` (
 --
 
 INSERT INTO `vendite` (`ven_Id`, `ven_Data`, `ven_for_Id`, `ven_cli_Id`) VALUES
-(1, '2024-03-01', 1, 1),
+(1, '2024-04-12', 1, 1),
 (2, '2024-03-02', 2, 2),
 (3, '2024-03-03', 3, 3),
 (4, '2024-03-04', 4, 4),
 (5, '2024-03-05', 5, 5),
 (6, '2024-03-06', 6, 6),
 (7, '2024-03-07', 7, 7),
-(8, '2024-03-08', 8, 8),
-(9, '2024-03-09', 9, 9),
-(10, '2024-03-10', 10, 10),
 (11, '2024-03-11', 11, 11),
 (12, '2024-03-12', 12, 12),
 (13, '2024-03-13', 13, 13),
 (14, '2024-03-14', 14, 14),
-(15, '2024-03-15', 15, 15);
+(15, '2024-03-15', 15, 15),
+(16, '2024-04-13', 30, 1),
+(17, '2024-04-13', 31, 1),
+(18, '2024-04-13', 33, 2),
+(19, '2024-04-13', 34, 3),
+(20, '2024-04-13', 37, 13),
+(21, '2024-04-13', 42, 13),
+(22, '2024-04-13', 44, 13),
+(23, '2024-04-13', 38, 8),
+(24, '2024-04-13', 41, 8);
 
 --
 -- Indici per le tabelle scaricate
@@ -381,7 +398,7 @@ ALTER TABLE `clienti`
 -- AUTO_INCREMENT per la tabella `forme`
 --
 ALTER TABLE `forme`
-  MODIFY `for_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `for_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT per la tabella `fotografie`
@@ -393,7 +410,7 @@ ALTER TABLE `fotografie`
 -- AUTO_INCREMENT per la tabella `giornatelav`
 --
 ALTER TABLE `giornatelav`
-  MODIFY `gioLav_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `gioLav_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT per la tabella `province`
@@ -411,7 +428,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `vendite`
 --
 ALTER TABLE `vendite`
-  MODIFY `ven_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ven_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Limiti per le tabelle scaricate

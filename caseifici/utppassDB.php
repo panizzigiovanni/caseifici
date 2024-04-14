@@ -10,10 +10,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style>
         body {
-            background-color: #f0f0f0;
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #453F78;
         }
         .login-container {
-            background-color: #ffffff;
+            background-color: #FFFEEF;
             border-radius: 10px;
             padding: 30px;
             width: 400px;
@@ -24,22 +26,23 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            border: 2px solid #FFC94A;
+            border-radius: 20px;
         }
         .submit-btn {
             margin-top: 20px;
         }
         .bottonifigi {
-            background-color: #1c94e0;
-            color: #ffffff;
+            background-color: #FFC94A;
+            color: #333;
             border: none;
             border-radius: 5px;
             padding: 10px 20px;
             cursor: pointer;
             margin-top: 10px;
         }
-        .bottonifigi:hover {
-            background-color: #1572a7;
-        }
+        
+        
     </style>
 </head>
 <body>
