@@ -20,14 +20,12 @@
     $sqlVendite='SELECT f.* FROM vendite v JOIN forme f ON v.ven_for_Id = f.for_Id WHERE v.ven_Data = "'.$dataInserimento.'" AND f.for_cas_Id = '.$codiceCas;
    
   
-    echo  $sqlVendite;
+    
     echo "</br>";
     $resul=$conn->query($sqlVendite);
 
     $numFormeVendute=$resul->num_rows;
 
-
-    echo $numFormeVendute;
     ////////////////////////////////////////////////////////
 
     $gioLav_date = $dataInserimento;
@@ -37,21 +35,34 @@
     $gioLav_QuaVend = $numFormeVendute;
     $gioLav_cas_Id = $codiceCas;
 
-   
-
-
-
-
-
     if($_SESSION['radice']=="U"){
         ///UPDATE
 
+        $data = $dataInserimento; // La data della giornata lavorativa da aggiornare
+        $quantita_latte = $gioLav_LatteLavo; // La nuova quantità di latte
+        $quantita_latte_formaggio = $gioLav_LatteFormag; // La nuova quantità di latte per formaggio
+        
+        // Query per l'aggiornamento dei campi basato sulla data
+        $sqlAggiorno = "UPDATE giornatelav SET gioLav_LatteLavo = ?, gioLav_LatteFormag = ? WHERE gioLav_date = ?";
+        
+        // Preparazione della query
+        $stmt = $conn->prepare($sqlAggiorno);
+        
+        // Associazione dei parametri
+        $stmt->bind_param("iis", $quantita_latte, $quantita_latte_formaggio, $data);
+        
+        // Esecuzione della query
+        if ($stmt->execute()) {
+            echo "Aggiornamento eseguito con successo.";
+            $errore="ok";
+        } else {
+            echo "Errore durante l'aggiornamento: " . $conn->error;
+            $errore=$conn->error;
+        }
 
 
-
-
-        //header("Location: inserimentoGiornataLav.php");
-        //exit();
+        header("Location: inserimentoGiornataLav.php?response=".$errore);
+        exit();
     }else if($_SESSION['radice']=="I"){
         ///INSERt
         // Prepara la query SQL
@@ -142,8 +153,10 @@
             // Esegue la query preparata
             if ($stmt->execute()) {
                echo "Nuova forma inserita correttamente.<br>";
+               $errore="ok";
             } else {
                echo "Errore durante l'inserimento della nuova forma: " . $stmt->error . "<br>";
+               $errore=$stmt->error;
             }
         }
 
@@ -151,7 +164,7 @@
         // Chiudi la dichiarazione
         $stmt->close();
 
-        header("Location: inserimentoGiornataLav.php?response=ok");
+        header("Location: inserimentoGiornataLav.php?response=".$errore."");
         exit();
     }
    

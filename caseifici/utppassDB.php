@@ -56,7 +56,7 @@
                 $password=$_POST['password'];
 
                 
-                //$passCrypt=md5($password);
+                
                 $passCrypt=$password;
 
                 $sql='SELECT * FROM utenti WHERE ut_username="'.$username.'"';

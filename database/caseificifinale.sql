@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 14, 2024 alle 11:58
--- Versione del server: 10.4.32-MariaDB
--- Versione PHP: 8.2.12
+-- Creato il: Apr 15, 2024 alle 09:30
+-- Versione del server: 10.4.27-MariaDB
+-- Versione PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,21 +44,21 @@ CREATE TABLE `caseifici` (
 --
 
 INSERT INTO `caseifici` (`cas_Id`, `cas_NomeCaseificio`, `cas_Indirizzo`, `cas_NomeTitolare`, `cas_Des`, `cas_NumTel`, `cas_pro_Id`, `cas_ut_Id`, `cas_linkGoogleMaps`) VALUES
-(1, 'Caseificio Uno', 'Via Roma 1', 'Giovanni Rossi', 'Produzione di formaggi tradizionali', '1234567890', 1, 1, ''),
-(2, 'Caseificio Due', 'Via Milano 2', 'Paola Bianchi', 'Specializzato in formaggi freschi', '0987654321', 2, 2, ''),
-(3, 'Caseificio Tre', 'Via Napoli 3', 'Luigi Ferrari', 'Produce formaggi a latte crudo', '1029384756', 3, 3, ''),
-(4, 'Caseificio Quattro', 'Via Firenze 4', 'Giorgia Rizzo', 'Caseificio biologico con produzione sostenibile', '6758493021', 4, 4, ''),
-(5, 'Caseificio Cinque', 'Via Torino 5', 'Giacomo Conti', 'Ampia varietà di formaggi stagionati', '3749201586', 5, 5, ''),
-(6, 'Caseificio Sei', 'Via Venezia 6', 'Alberto Rossi', 'Caseificio specializzato nella produzione di formaggi freschi', '1234567890', 6, 6, ''),
-(7, 'Caseificio Sette', 'Via Palermo 7', 'Paolo Bianchi', 'Caseificio artigianale che produce formaggi tradizionali', '0987654321', 7, 7, ''),
-(8, 'Caseificio Otto', 'Via Genova 8', 'Giovanna Russo', 'Caseificio familiare con una vasta gamma di formaggi stagionati', '1029384756', 8, 8, ''),
-(9, 'Caseificio Nove', 'Via Bologna 9', 'Giulio Galli', 'Caseificio biologico certificato che produce formaggi a latte crudo', '6758493021', 9, 9, ''),
-(10, 'Caseificio Dieci', 'Via Trieste 10', 'Laura Moretti', 'Caseificio innovativo con formaggi gourmet', '3749201586', 10, 10, ''),
-(11, 'Caseificio Undici', 'Via Trento 11', 'Giovanni Ferri', 'Produzione di formaggi locali di alta qualità', '1234567890', 11, 11, ''),
-(12, 'Caseificio Dodici', 'Via Pisa 12', 'Simona Martini', 'Specialità di formaggi freschi e stagionati', '0987654321', 12, 12, ''),
-(13, 'Caseificio Tredici', 'Via Lecce 13', 'Davide Gallo', 'Caseificio che produce formaggi tipici della regione', '1029384756', 13, 13, ''),
-(14, 'Caseificio Quattordi', 'Via Agrigento 14', 'Sara Fabbri', 'Produzione artigianale di formaggi di montagna', '6758493021', 14, 14, ''),
-(15, 'Caseificio Quindici', 'Via Bolzano 15', 'Matteo Rossini', 'Caseificio con specialità regionali e stagionature uniche', '3749201586', 15, 15, '');
+(1, 'Caseificio Uno', 'Via Roma 1', 'Giovanni Rossi', 'Produzione di formaggi tradizionali', '1234567890', 1, 1, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92686.69005986216!2d12.211414044472207!3d43.45101236686142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132c6d225e6c6ba7%3A0xfa1009fa38bf3aa7!2sCaseificio%20%22I%20formaggi%20di%20Candeggio%22!5'),
+(2, 'Caseificio Due', 'Via Milano 2', 'Paola Bianchi', 'Specializzato in formaggi freschi', '0987654321', 2, 2, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185763.56137479626!2d12.141827567415769!3d43.32356058768476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132ea8e73695ef83%3A0x78e5ab4e43f50ab1!2sEredi%20Sotgia%20Antonio%20Raimondo!'),
+(3, 'Caseificio Tre', 'Via Napoli 3', 'Luigi Ferrari', 'Produce formaggi a latte crudo', '1029384756', 3, 3, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d374562.70257873886!2d11.225043134282489!3d42.82488661235908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13292fd1c3014809%3A0x63a3ed7a669664cd!2sFattorie%20Di%20Maremma%20Srl!5e0!3m2!1sit!2sit!4'),
+(4, 'Caseificio Quattro', 'Via Firenze 4', 'Giorgia Rizzo', 'Caseificio biologico con produzione sostenibile', '6758493021', 4, 4, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d371256.0855205212!2d11.66307537258501!3d43.36786143303747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132be392b8348f59%3A0xa86a39aaeba835d7!2sCaseificio%20Matteassi%20Onelio%20S.%20R.%20L.!5e0!'),
+(5, 'Caseificio Cinque', 'Via Torino 5', 'Giacomo Conti', 'Ampia varietà di formaggi stagionati', '3749201586', 5, 5, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d371756.57842110615!2d12.16307404442788!3d43.28602781185388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132c34441fc3a6cb%3A0xbbf45acb6dd14ff5!2sCaseificio%20Facchini!5e0!3m2!1sit!2sit!4v17131631'),
+(6, 'Caseificio Sei', 'Via Venezia 6', 'Alberto Rossi', 'Caseificio specializzato nella produzione di formaggi freschi', '1234567890', 6, 6, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d369693.1051388622!2d12.168654616592532!3d43.6226261124017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cfbf1e15347f9%3A0x8b2ce7b12668d6af!2sCaseificio%20Val%20D&#39;Apsa!5e0!3m2!1sit!2sit!4v1'),
+(7, 'Caseificio Sette', 'Via Palermo 7', 'Paolo Bianchi', 'Caseificio artigianale che produce formaggi tradizionali', '0987654321', 7, 7, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1470606.4255001296!2d10.437637871959955!3d43.953610312937734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cbf2d40302235%3A0x755f2440c520b3d8!2sCaseificio%20Pascoli!5e0!3m2!1sit!2sit!4v1713163'),
+(8, 'Caseificio Otto', 'Via Genova 8', 'Giovanna Russo', 'Caseificio familiare con una vasta gamma di formaggi stagionati', '1029384756', 8, 8, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744158.681456845!2d11.4038438675718!3d43.23318834938725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13294247b6d32477%3A0xf9dc51228dfc9cfe!2sCaseificio%20Val%20D&#39;Orcia!5e0!3m2!1sit!2sit!4v17'),
+(9, 'Caseificio Nove', 'Via Bologna 9', 'Giulio Galli', 'Caseificio biologico certificato che produce formaggi a latte crudo', '6758493021', 9, 9, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d371672.93896751746!2d11.653043457489787!3d43.29971199840529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13295d5d973b06df%3A0x44048ddf55207fe7!2sCaseificio%20Pienza%20Solp!5e0!3m2!1sit!2sit!4v17'),
+(10, 'Caseificio Dieci', 'Via Trieste 10', 'Laura Moretti', 'Caseificio innovativo con formaggi gourmet', '3749201586', 10, 10, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185255.96026823102!2d11.809352223392164!3d43.489308712744595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132bed5f05cf01e5%3A0xfcdd1aaf9ec43fae!2sCaseificio%20Aretino!5e0!3m2!1sit!2sit!4v1713163'),
+(11, 'Caseificio Undici', 'Via Trento 11', 'Giovanni Ferri', 'Produzione di formaggi locali di alta qualità', '1234567890', 11, 11, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d627710.2270892092!2d11.12230989514277!3d44.29106229756376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fd358be6d78bb%3A0xa01551c781ef3a07!2sCaseificio%20Le%20Delizie%20Bufala%20%26%20passione'),
+(12, 'Caseificio Dodici', 'Via Pisa 12', 'Simona Martini', 'Specialità di formaggi freschi e stagionati', '0987654321', 12, 12, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d371718.9670668247!2d11.63628995030165!3d43.29218180579247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132967a7599765c9%3A0xb1000cdf95b92649!2sCaseificio%20Di%20Mario!5e0!3m2!1sit!2sit!4v1713163'),
+(13, 'Caseificio Tredici', 'Via Lecce 13', 'Davide Gallo', 'Caseificio che produce formaggi tipici della regione', '1029384756', 13, 13, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d743494.6853888188!2d11.407373645783904!3d43.287539032385745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13295c2cfc5c65ff%3A0x3f40f8372c743598!2sCaseificio%20Cugusi%20Silvana%20%26%'),
+(14, 'Caseificio Quattordi', 'Via Agrigento 14', 'Sara Fabbri', 'Produzione artigianale di formaggi di montagna', '6758493021', 14, 14, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744463.0836027615!2d11.30714901293786!3d43.208253501223766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13296d05431fff59%3A0xd90e5eb06e10e725!2sCaseificio%20Seggiano!5e0!3m2!1sit!2sit!4v17131637'),
+(15, 'Caseificio Quindici', 'Via Bolzano 15', 'Matteo Rossini', 'Caseificio con specialità regionali e stagionature uniche', '3749201586', 15, 15, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d747449.2258412825!2d11.646175586078378!3d42.963030079167815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132efb6efab53c2d%3A0xfb914cdb8adb56dd!2sCaseificio%20Brufani%20Ubaldo%20Terni!5e0!3m2!1si');
 
 -- --------------------------------------------------------
 
@@ -132,11 +132,11 @@ INSERT INTO `forme` (`for_Id`, `for_DataProduzione`, `for_Venduta`, `for_Progres
 (33, '2024-04-12', 1, 3, '36', 1, 1),
 (34, '2024-04-12', 1, 4, '36', 1, 1),
 (35, '2024-04-13', 0, 4, '12', 1, 1),
-(36, '2024-04-13', 0, 5, '12', 1, 1),
+(36, '2024-04-13', 1, 5, '12', 1, 1),
 (37, '2024-04-13', 1, 6, '12', 1, 1),
 (38, '2024-04-13', 1, 7, '12', 1, 1),
-(39, '2024-04-13', 0, 8, '12', 1, 1),
-(40, '2024-04-13', 0, 9, '24', 0, 1),
+(39, '2024-04-13', 0, 8, '12', 0, 1),
+(40, '2024-04-13', 1, 9, '24', 0, 1),
 (41, '2024-04-13', 1, 10, '24', 1, 1),
 (42, '2024-04-13', 1, 11, '24', 1, 1),
 (44, '2024-04-13', 1, 13, '36', 1, 1);
@@ -158,21 +158,21 @@ CREATE TABLE `fotografie` (
 --
 
 INSERT INTO `fotografie` (`fot_Id`, `fot_Percorso`, `fot_cas_Id`) VALUES
-(1, 'immagini\\cas1.jpg', 1),
-(2, 'immagini\\cas12.jpg', 2),
-(3, 'immagini\\cas2.jpg', 3),
-(4, 'immagini\\cas3.jpg', 4),
-(5, 'immagini\\cas5.jpg', 5),
-(6, 'immagini\\cas4.jpg', 6),
-(7, 'immagini\\cas8.jpg', 7),
-(8, 'immagini\\cas7.jpg', 8),
-(9, 'immagini\\cas6.jpg', 9),
-(10, 'immagini\\cas11.jpg', 10),
-(11, 'immagini\\cas9.jpeg', 11),
-(12, 'immagini\\cas10.jpg', 12),
-(13, 'immagini\\cas15.jpg', 13),
-(14, 'immagini\\cas13.jpg', 14),
-(15, 'immagini\\cas16.jpg', 15);
+(1, 'immagini/cas1.jpg', 1),
+(2, 'immagini/cas12.jpg', 2),
+(3, 'immagini/cas2.jpg', 3),
+(4, 'immagini/cas3.jpg', 4),
+(5, 'immagini/cas5.jpg', 5),
+(6, 'immagini/cas4.jpg', 6),
+(7, 'immagini/cas8.jpg', 7),
+(8, 'immagini/cas7.jpg', 8),
+(9, 'immagini/cas6.jpg', 9),
+(10, 'immagini/cas11.jpg', 10),
+(11, 'immagini/cas9.jpeg', 11),
+(12, 'immagini/cas10.jpg', 12),
+(13, 'immagini/cas15.jpg', 13),
+(14, 'immagini/cas13.jpg', 14),
+(15, 'immagini/cas16.jpg', 15);
 
 -- --------------------------------------------------------
 
@@ -317,7 +317,9 @@ INSERT INTO `vendite` (`ven_Id`, `ven_Data`, `ven_for_Id`, `ven_cli_Id`) VALUES
 (21, '2024-04-13', 42, 13),
 (22, '2024-04-13', 44, 13),
 (23, '2024-04-13', 38, 8),
-(24, '2024-04-13', 41, 8);
+(24, '2024-04-13', 41, 8),
+(25, '2024-04-15', 36, 13),
+(26, '2024-04-15', 40, 13);
 
 --
 -- Indici per le tabelle scaricate
@@ -428,7 +430,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `vendite`
 --
 ALTER TABLE `vendite`
-  MODIFY `ven_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ven_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Limiti per le tabelle scaricate
